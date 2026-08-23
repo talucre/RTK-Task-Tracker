@@ -64,8 +64,8 @@ describe('taskSlice', () => {
 
         test('При несуществующем id ничего не делает', () => {
             const result = taskReducer(state, toggleCompleted('qwe'))
-            expect(result).not.toBe(state) // не ссылается на тот же стейт
-            expect(result).toEqual(state) // но не отличается от него
+            expect(result).toBe(state) // не ссылается на тот же стейт
+            expect(result).toEqual(state) // и не отличается от него
         })
     })
 

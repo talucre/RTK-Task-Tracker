@@ -29,12 +29,10 @@ const taskSlice = createSlice({
             },
         },
         toggleCompleted: (state, action: PayloadAction<string>) => {
-            const id = action.payload
-            state.tasks = state.tasks.map(task =>
-                task.id === id
-                    ? { ...task, isCompleted: !task.isCompleted }
-                    : task,
-            )
+            const task = state.tasks.find(t => t.id === action.payload)
+            if (task) {
+                task.isCompleted = !task.isCompleted
+            }
         },
         removeTask: (state, action: PayloadAction<string>) => {
             const id = action.payload
