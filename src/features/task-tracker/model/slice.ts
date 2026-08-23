@@ -28,8 +28,20 @@ const taskSlice = createSlice({
                 }
             },
         },
+        toggleCompleted: (state, action: PayloadAction<string>) => {
+            const id = action.payload
+            state.tasks = state.tasks.map(task =>
+                task.id === id
+                    ? { ...task, isCompleted: !task.isCompleted }
+                    : task,
+            )
+        },
+        removeTask: (state, action: PayloadAction<string>) => {
+            const id = action.payload
+            state.tasks = state.tasks.filter(task => task.id !== id)
+        },
     },
 })
 
-export const { createTask } = taskSlice.actions
+export const { createTask, toggleCompleted, removeTask } = taskSlice.actions
 export default taskSlice.reducer
