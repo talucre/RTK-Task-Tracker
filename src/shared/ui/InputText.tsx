@@ -8,6 +8,7 @@ import { twMerge } from 'tailwind-merge'
 // т.к. приложение маленькое, ограничимся лишь текстовым инпутом
 interface Props extends Omit<ComponentProps<'input'>, 'type'> {
     className?: string
+    wrapperClassName?: string
     error?: string
     type?: 'text' | 'email' | 'tel'
 }
@@ -15,11 +16,17 @@ interface Props extends Omit<ComponentProps<'input'>, 'type'> {
 export const InputText = ({
     error,
     className,
+    wrapperClassName,
     type = 'text',
     ...rest
 }: Props) => {
     return (
-        <div className="relative inline-block w-full">
+        <div
+            className={twMerge(
+                'relative inline-block w-full',
+                wrapperClassName,
+            )}
+        >
             <input
                 className={twMerge(
                     'w-full px-4 py-2 border-2 text-xl rounded-xl focus-visible:outline-none hover:border-gray-700 focus:border-black transition-all duration-100 ease-linear',
