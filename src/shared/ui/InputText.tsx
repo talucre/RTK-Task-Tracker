@@ -29,14 +29,14 @@ export const InputText = ({
         >
             <input
                 className={twMerge(
-                    'w-full px-4 py-2 border-2 text-xl rounded-xl focus-visible:outline-none hover:border-gray-700 focus:border-black transition-all duration-100 ease-linear',
+                    'w-full px-4 py-2 border-2 text-xl rounded-xl border-gray-400 focus-visible:outline-none hover:border-gray-700 focus:border-black transition-all duration-100 ease-linear',
                     className,
                 )}
                 type={type}
                 {...rest}
             />
             {error && (
-                <span className="absolute top-full left-0.5 text-red-600">
+                <span className="absolute bottom-full right-2 text-red-600">
                     {error}
                 </span>
             )}
