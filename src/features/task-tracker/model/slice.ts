@@ -7,7 +7,18 @@ interface TaskState {
 }
 
 const initialState: TaskState = {
-    tasks: [],
+    tasks: [
+        {
+            id: '123',
+            title: 'test title 1',
+            isCompleted: false,
+        },
+        {
+            id: '321',
+            title: 'test title 2',
+            isCompleted: true,
+        },
+    ],
 }
 
 const taskSlice = createSlice({
