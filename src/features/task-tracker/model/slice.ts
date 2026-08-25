@@ -2,28 +2,23 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { CreateTaskInput, Task } from './types'
 import { nanoid } from '@reduxjs/toolkit'
 
-interface TaskState {
-    tasks: Task[]
-}
-
-const initialState: TaskState = {
-    tasks: [
-        {
-            id: '123',
-            title: 'test title 1',
-            isCompleted: false,
-        },
-        {
-            id: '321',
-            title: 'test title 2',
-            isCompleted: true,
-        },
-    ],
+const loadInitialTaksk = (): Task[] => {
+    try {
+        const serialized = localStorage.getItem('saved-tasks')
+        if (serialized) {
+            return JSON.parse(serialized)
+        }
+    } catch (e) {
+        console.error('Ошибка чтения localStorage', e)
+    }
+    return []
 }
 
 const taskSlice = createSlice({
     name: 'tasks',
-    initialState,
+    initialState: {
+        tasks: loadInitialTaksk(),
+    },
     reducers: {
         createTask: {
             reducer: (state, action: PayloadAction<Task>) => {
