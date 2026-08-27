@@ -1,9 +1,9 @@
-import { createTestStore } from './createTestStore'
-import userEvent from '@testing-library/user-event'
 import { cleanup, render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
+
+import { createTestStore } from './createTestStore'
 import { TaskTracker } from '../ui/TaskTracker'
-import '@testing-library/jest-dom'
 
 describe('Интеграционный тест TaskTracker', () => {
     let store: ReturnType<typeof createTestStore>
