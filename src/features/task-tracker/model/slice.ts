@@ -1,6 +1,11 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import {
+    createSelector,
+    createSlice,
+    type PayloadAction,
+} from '@reduxjs/toolkit'
 import type { CreateTaskInput, Task } from './types'
 import { nanoid } from '@reduxjs/toolkit'
+import type { RootState } from '@/app/store/store'
 
 const loadInitialTaksk = (): Task[] => {
     try {
@@ -45,6 +50,13 @@ const taskSlice = createSlice({
             state.tasks = state.tasks.filter(task => task.id !== id)
         },
     },
+})
+const selectTasks = (state: RootState) => state.tasks.tasks
+
+export const selectTasksSorted = createSelector([selectTasks], tasks => {
+    return [...tasks].sort(
+        (a, b) => Number(a.isCompleted) - Number(b.isCompleted),
+    )
 })
 
 export const { createTask, toggleCompleted, removeTask } = taskSlice.actions

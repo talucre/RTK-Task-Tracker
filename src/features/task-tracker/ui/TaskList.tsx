@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from '@/app/store/hooks'
 import { deleteIcon } from '@/shared/assets'
-import { removeTask, toggleCompleted } from '../model/slice'
+import { removeTask, selectTasksSorted, toggleCompleted } from '../model/slice'
 
 export const TaskList = () => {
-    const tasks = useAppSelector(store => store.tasks.tasks)
+    const tasks = useAppSelector(selectTasksSorted)
     const dispatch = useAppDispatch()
 
     return (
