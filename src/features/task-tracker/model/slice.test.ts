@@ -1,5 +1,3 @@
-import { expect, test, describe } from 'vitest'
-
 import taskReducer, { createTask, removeTask, toggleCompleted } from './slice'
 import type { CreateTaskInput } from './types'
 

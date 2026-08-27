@@ -12,8 +12,12 @@ export const TaskList = () => {
                 <div
                     key={t.id}
                     className="text-xl border-b-2 border-gray-300 pb-1 flex items-center"
+                    data-testid="task-container"
                 >
-                    <div className="flex-1 flex items-center">
+                    <div
+                        className="flex-1 flex items-center"
+                        data-testid="task-text-wrapper"
+                    >
                         <input
                             type="checkbox"
                             id={t.id}
@@ -35,7 +39,7 @@ export const TaskList = () => {
                     </div>
                     <button
                         onClick={() => dispatch(removeTask(t.id))}
-                        className="w-5 h-5 ml-1 cursor-pointer flex items-center justify-center hover:text-red-700"
+                        className="w-5 h-5 ml-1 cursor-pointer flex items-center justify-center"
                     >
                         <img src={deleteIcon} alt="del" />
                     </button>

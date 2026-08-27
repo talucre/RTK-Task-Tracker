@@ -1,7 +1,10 @@
 import z from 'zod'
 
 export const createTaskSchema = z.object({
-    title: z.string().min(1, 'Task title is necessary'),
+    title: z
+        .string()
+        .transform(s => s.trim())
+        .pipe(z.string().min(1, 'Task title is necessary')),
 })
 
 export const taskSchema = createTaskSchema.extend({
